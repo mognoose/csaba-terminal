@@ -11,7 +11,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const mainElement = document.querySelector('.main');
 
     function generateNavigation() {
-        const ul = document.querySelector('nav ul');
+        const menu = document.querySelector('nav.desktop ul');
+        const mobileMenu = document.querySelector('nav.mobile ul');
+
         options.forEach(option => {
             const li = document.createElement('li');
             const a = document.createElement('a');
@@ -22,7 +24,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 a.rel = 'noopener noreferrer';
             }
             li.appendChild(a);
-            ul.appendChild(li);
+            menu.appendChild(li);
+            mobileMenu.appendChild(li.cloneNode(true));
+
         });
     }
 
