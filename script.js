@@ -41,7 +41,21 @@ document.addEventListener('DOMContentLoaded', () => {
         });
         preElement.appendChild(document.createTextNode('\n\nEnter the number of your choice and press Enter:\n\n'));
     }
+
+    function printLogo() {
+        preElement.appendChild(document.createTextNode(`
+  ██████  ▄▄▄       ██▓███   ▄▄▄     ▄▄▄█████▓▄▄▄█████▓ ██▓
+▒██    ▒ ▒████▄    ▓██░  ██▒▒████▄   ▓  ██▒ ▓▒▓  ██▒ ▓▒▓██▒
+░ ▓██▄   ▒██  ▀█▄  ▓██░ ██▓▒▒██  ▀█▄ ▒ ▓██░ ▒░▒ ▓██░ ▒░▒██▒
+  ▒   ██▒░██▄▄▄▄██ ▒██▄█▓▒ ▒░██▄▄▄▄██░ ▓██▓ ░ ░ ▓██▓ ░ ░██░
+▒██████▒▒ ▓█   ▓██▒▒██▒ ░  ░ ▓█   ▓██▒ ▒██▒ ░   ▒██▒ ░ ░██░
+▒ ▒▓▒ ▒ ░ ▒▒   ▓▒█░▒▓▒░ ░  ░ ▒▒   ▓▒█░ ▒ ░░     ▒ ░░   ░▓  
+░ ░▒  ░ ░  ▒   ▒▒ ░░▒ ░       ▒   ▒▒ ░   ░        ░     ▒ ░
+░  ░  ░    ░   ▒   ░░         ░   ▒    ░        ░       ▒ ░
+    ░        ░  ░               ░  ░                  ░  `));
+    }
     
+    printLogo();
     printOptions();
 
     mainElement.addEventListener('click', () => {
