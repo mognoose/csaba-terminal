@@ -1,11 +1,4 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const options = [
-        { id: 1, label: 'NAS', value: 'http://sapatti.synology.me:5000/' },
-        { id: 2, label: 'Photos', value: 'http://sapatti.synology.me:8080/photo' },
-        { id: 3, label: 'Home Assistant', value: 'http://sapatti.synology.me:8123/' },
-        { id: 4, label: 'GitHub', value: 'https://github.com/mognoose', external: true, icon: 'fab fa-github' },
-        { id: 5, label: 'LinkedIn', value: 'https://www.linkedin.com/in/csaba-szilagyi/', external: true, icon: 'fab fa-linkedin' },
-    ]
     const commandInput = document.getElementById('commandInput');
     const preElement = document.querySelector('pre');
     const mainElement = document.querySelector('.main');
@@ -16,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const menu = document.querySelector('nav.desktop ul');
         const mobileMenu = document.querySelector('nav.mobile ul');
 
-        options.forEach(option => {
+        links.forEach(option => {
             const li = document.createElement('li');
             const a = document.createElement('a');
             a.href = option.value;
@@ -36,23 +29,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function printOptions() {
         preElement.appendChild(document.createTextNode('\n\nAvailable options:'));
-        options.forEach(option => {
+        links.forEach(option => {
             preElement.appendChild(document.createTextNode('\n' + option.id + ') ' + option.label));
         });
         preElement.appendChild(document.createTextNode('\n\nEnter the number of your choice and press Enter:\n\n'));
     }
 
     function printLogo() {
-        preElement.appendChild(document.createTextNode(`
-  ██████  ▄▄▄       ██▓███   ▄▄▄     ▄▄▄█████▓▄▄▄█████▓ ██▓
-▒██    ▒ ▒████▄    ▓██░  ██▒▒████▄   ▓  ██▒ ▓▒▓  ██▒ ▓▒▓██▒
-░ ▓██▄   ▒██  ▀█▄  ▓██░ ██▓▒▒██  ▀█▄ ▒ ▓██░ ▒░▒ ▓██░ ▒░▒██▒
-  ▒   ██▒░██▄▄▄▄██ ▒██▄█▓▒ ▒░██▄▄▄▄██░ ▓██▓ ░ ░ ▓██▓ ░ ░██░
-▒██████▒▒ ▓█   ▓██▒▒██▒ ░  ░ ▓█   ▓██▒ ▒██▒ ░   ▒██▒ ░ ░██░
-▒ ▒▓▒ ▒ ░ ▒▒   ▓▒█░▒▓▒░ ░  ░ ▒▒   ▓▒█░ ▒ ░░     ▒ ░░   ░▓  
-░ ░▒  ░ ░  ▒   ▒▒ ░░▒ ░       ▒   ▒▒ ░   ░        ░     ▒ ░
-░  ░  ░    ░   ▒   ░░         ░   ▒    ░        ░       ▒ ░
-    ░        ░  ░               ░  ░                  ░  `));
+        preElement.appendChild(document.createTextNode(logo));
     }
     
     printLogo();
@@ -69,7 +53,7 @@ document.addEventListener('DOMContentLoaded', () => {
             commandInput.value = '';
 
             if (inputValue.length === 1) {
-                const selectedOption = options.find(option => option.id === parseInt(inputValue));
+                const selectedOption = links.find(option => option.id === parseInt(inputValue));
                 if (selectedOption) {
                     selectedOption.external ? window.open(selectedOption.value) : window.location.href = selectedOption.value;
                 } else {
