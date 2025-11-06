@@ -2,12 +2,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const commandInput = document.getElementById('commandInput');
     const preElement = document.querySelector('pre');
     const mainElement = document.querySelector('.main');
+    const desktopNav = document.querySelector('nav.desktop');
+    const mobileNav = document.querySelector('nav.mobile');
 
     function generateNavigation() {
-        document.querySelector('nav.desktop ul').innerHTML = '';
-        document.querySelector('nav.mobile ul').innerHTML = '';      
-        const menu = document.querySelector('nav.desktop ul');
-        const mobileMenu = document.querySelector('nav.mobile ul');
+        desktopNav.querySelector('ul').innerHTML = '';
+        mobileNav.querySelector('ul').innerHTML = '';
+        const menu = desktopNav.querySelector('ul');
+        const mobileMenu = mobileNav.querySelector('ul');
 
         links.forEach(option => {
             const li = document.createElement('li');
