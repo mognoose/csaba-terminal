@@ -11,6 +11,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const mainElement = document.querySelector('.main');
 
     function generateNavigation() {
+        document.querySelector('nav.desktop ul').innerHTML = '';
+        document.querySelector('nav.mobile ul').innerHTML = '';      
         const menu = document.querySelector('nav.desktop ul');
         const mobileMenu = document.querySelector('nav.mobile ul');
 
@@ -18,7 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const li = document.createElement('li');
             const a = document.createElement('a');
             a.href = option.value;
-            a.innerHTML = option.icon ? `<i class="${option.icon}"></i>` : option.label;
+            a.innerHTML = (option.icon && window.innerWidth > 500) ? `<i class="${option.icon}"></i>` : option.label;
             if (option.external) {
                 a.target = '_blank';
                 a.rel = 'noopener noreferrer';
@@ -69,4 +71,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
         }
     });
+
+    window.addEventListener('resize', () => {
+        generateNavigation();
+    });
+        
 });
