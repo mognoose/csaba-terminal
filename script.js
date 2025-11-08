@@ -49,6 +49,10 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     commandInput.addEventListener('keydown', (event) => {
+        if (event.ctrlKey && event.key === 'l') {
+            event.preventDefault();
+            location.reload();
+        }
         if (event.key === 'Enter') {
             const inputValue = commandInput.value;
             console.log('Command entered:', inputValue);
@@ -63,6 +67,26 @@ document.addEventListener('DOMContentLoaded', () => {
                     printOptions();
                 }
             } else {
+                switch (inputValue.toLowerCase()) {
+                    case 'help':
+                        preElement.appendChild(document.createTextNode('\n> Help - List of available commands:'));
+                        preElement.appendChild(document.createTextNode('\n- Enter a number corresponding to the options to navigate.'));
+                        preElement.appendChild(document.createTextNode('\n- Type "clear" to clear the screen.'));
+                        preElement.appendChild(document.createTextNode('\n- Type "logo" to display the logo again.'));
+                        break;
+                    case 'clear':
+                        preElement.innerHTML = '';
+                        printLogo();
+                        break;
+                    case 'logo':
+                        printLogo();
+                        break;
+                    default:
+                        preElement.appendChild(document.createTextNode(`\n> Unknown command: "${inputValue}". Type "help" for assistance.`));
+                }
+            }
+
+            if (inputValue.length !== 1) {
                 preElement.appendChild(document.createTextNode('\n> Please enter a single number corresponding to the options.'));
                 printOptions();
             }
@@ -74,6 +98,5 @@ document.addEventListener('DOMContentLoaded', () => {
 
     window.addEventListener('resize', () => {
         generateNavigation();
-    });
-        
+    }); 
 });
